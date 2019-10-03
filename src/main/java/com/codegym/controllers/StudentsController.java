@@ -1,6 +1,8 @@
 package com.codegym.controllers;
 
+import com.codegym.model.Classes;
 import com.codegym.model.Students;
+import com.codegym.service.ClassesService;
 import com.codegym.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,6 +17,14 @@ public class StudentsController {
 
     @Autowired
     private StudentsService studentsService;
+
+    @Autowired
+    private ClassesService classesService;
+
+    @ModelAttribute("classes")
+    public Iterable<Classes> classes(){
+        return classesService.findAll();
+    }
 
     @GetMapping("/students")
     public ModelAndView listStudents(){

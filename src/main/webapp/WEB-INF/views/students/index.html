@@ -14,6 +14,7 @@
             <tr>
                 <th>Name Student</th>
                 <th>Birthdate</th>
+                <th>Class</th>
                 <th>Edit</th>
                 <th>Delete</th>
             </tr>
@@ -21,6 +22,7 @@
                 <tr>
                     <td th:text="${student.nameStudent}">
                     <td th:text="${student.birthdate}"></td>
+                    <td th:text="${student.classes.nameClass}"></td>
                     <td><a th:href="@{/edit-student/__${student.id}__}">Edit</a></td>
                     <td><a th:href="@{/delete-student/__${student.id}__}">Delete</a></td>
                 </tr>

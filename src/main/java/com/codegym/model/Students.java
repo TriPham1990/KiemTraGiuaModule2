@@ -12,6 +12,10 @@ public class Students {
     private String nameStudent;
     private String birthdate;
 
+    @ManyToOne
+    @JoinColumn(name = "classes_id")
+    private Classes classes;
+
     public Students() {
     }
 
@@ -42,5 +46,13 @@ public class Students {
 
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
+    }
+
+    public Classes getClasses() {
+        return classes;
+    }
+
+    public void setClasses(Classes classes) {
+        this.classes = classes;
     }
 }
