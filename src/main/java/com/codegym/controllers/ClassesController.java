@@ -1,7 +1,9 @@
 package com.codegym.controllers;
 
 import com.codegym.model.Classes;
+import com.codegym.model.Students;
 import com.codegym.service.ClassesService;
+import com.codegym.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,9 +14,23 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ClassesController {
+    @Autowired
+    private StudentsService studentsService;
 
     @Autowired
     private ClassesService classesService;
+
+    @GetMapping("/view-class/{id}")
+    public ModelAndView viewClass(@PathVariable("id") Long id){
+        Classes classes = classesService.findById(id);
+
+        Iterable<Students> students = studentsService.findAllByClasses(classes);
+
+        ModelAndView modelAndView = new ModelAndView("/classes/view");
+        modelAndView.addObject("classes", classes);
+        modelAndView.addObject("students", students);
+        return modelAndView;
+    }
 
     @GetMapping("/classes")
     public ModelAndView listClass(){

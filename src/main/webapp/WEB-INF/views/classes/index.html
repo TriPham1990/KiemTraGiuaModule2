@@ -18,7 +18,7 @@
         </tr>
         <th:block th:each="c : ${classes}">
             <tr>
-                <td th:text="${c.nameClass}">
+                <td><a th:href="@{/view-class/__${c.id}__}" th:text="${c.nameClass}"></a></td>
                 <td><a th:href="@{/edit-class/__${c.id}__}">Edit</a></td>
                 <td><a th:href="@{/delete-class/__${c.id}__}">Delete</a></td>
             </tr>
