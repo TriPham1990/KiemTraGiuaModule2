@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List</title>
+</head>
+<body>
+<fieldset>
+    <legend><h2>Students List</h2></legend>
+    <p>
+        <a href="/create-student">Create New Student</a>
+    </p>
+        <table border="1">
+            <tr>
+                <th>Name Student</th>
+                <th>Birthdate</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+            <th:block th:each="student : ${students}">
+                <tr>
+                    <td th:text="${student.nameStudent}">
+                    <td th:text="${student.birthdate}"></td>
+                    <td><a th:href="@{/edit-student/__${student.id}__}">Edit</a></td>
+                    <td><a th:href="@{/delete-student/__${student.id}__}">Delete</a></td>
+                </tr>
+            </th:block>
+        </table>
+</fieldset>
+</body>
+</html>

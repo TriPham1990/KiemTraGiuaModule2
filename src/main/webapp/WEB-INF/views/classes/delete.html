@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete</title>
+</head>
+<body>
+<fieldset>
+    <legend><h2>Delete Class</h2></legend>
+    <p>
+        <a href="/classes">Back To Class List</a>
+    </p>
+    <form th:action="@{/delete-class}" method="post" th:object="${classes}">
+        <input type="hidden" th:field="*{id}"/>
+        <table border="1">
+            <tr>
+                <th>Name Class :</th>
+                <td th:text="${classes.nameClass}"></td>
+                <td><button type="submit">Submit</button></td>
+            </tr>
+        </table>
+    </form>
+</fieldset>
+</body>
+</html>
