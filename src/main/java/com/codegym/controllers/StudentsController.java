@@ -5,6 +5,9 @@ import com.codegym.model.Students;
 import com.codegym.service.ClassesService;
 import com.codegym.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -27,9 +30,9 @@ public class StudentsController {
     }
 
     @GetMapping("/students")
-    public ModelAndView listStudents(){
+    public ModelAndView listStudents(@PageableDefault(size = 5) Pageable pageable){
         ModelAndView modelAndView = new ModelAndView("students/index");
-        modelAndView.addObject("students", studentsService.findAll());
+        modelAndView.addObject("students", studentsService.findAll(pageable));
         return modelAndView;
     }
 

@@ -5,6 +5,8 @@ import com.codegym.model.Students;
 import com.codegym.repository.StudentsRepository;
 import com.codegym.service.StudentsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 public class StudentsServiceImpl implements StudentsService {
     @Autowired
@@ -16,8 +18,8 @@ public class StudentsServiceImpl implements StudentsService {
     }
 
     @Override
-    public Iterable<Students> findAll() {
-        return studentsRepository.findAll();
+    public Page<Students> findAll(Pageable pageable) {
+        return studentsRepository.findAll(pageable);
     }
 
     @Override
