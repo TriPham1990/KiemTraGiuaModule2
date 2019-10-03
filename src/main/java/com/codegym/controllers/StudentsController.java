@@ -30,7 +30,7 @@ public class StudentsController {
     }
 
     @GetMapping("/students")
-    public ModelAndView listStudents(@PageableDefault(size = 5) Pageable pageable){
+    public ModelAndView listStudents(@PageableDefault(size = 5, sort = "nameStudent") Pageable pageable){
         ModelAndView modelAndView = new ModelAndView("students/index");
         modelAndView.addObject("students", studentsService.findAll(pageable));
         return modelAndView;
