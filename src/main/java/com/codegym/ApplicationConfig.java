@@ -1,6 +1,7 @@
 package com.codegym;
 
 import com.codegym.formatter.ClassesFormatter;
+import com.codegym.formatter.StringToLocalDateConverter;
 import com.codegym.service.ClassesService;
 import com.codegym.service.StudentsService;
 import com.codegym.service.impl.ClassesServiceImpl;
@@ -55,6 +56,8 @@ public class ApplicationConfig extends WebMvcConfigurerAdapter implements Applic
     @Override
     public void addFormatters(FormatterRegistry registry) {
         registry.addFormatter(new ClassesFormatter(applicationContext.getBean(ClassesService.class)));
+        StringToLocalDateConverter stringToLocalDateConverter = new StringToLocalDateConverter();
+        registry.addConverter(stringToLocalDateConverter);
     }
 
     private ApplicationContext applicationContext;

@@ -1,6 +1,8 @@
 package com.codegym.model;
 
+
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "students")
@@ -10,7 +12,7 @@ public class Students {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String nameStudent;
-    private String birthdate;
+    private LocalDate birthdate;
 
     @ManyToOne
     @JoinColumn(name = "classes_id")
@@ -19,7 +21,7 @@ public class Students {
     public Students() {
     }
 
-    public Students(String nameStudent, String birthdate) {
+    public Students(String nameStudent, LocalDate birthdate) {
         this.nameStudent = nameStudent;
         this.birthdate = birthdate;
     }
@@ -40,11 +42,11 @@ public class Students {
         this.nameStudent = nameStudent;
     }
 
-    public String getBirthdate() {
+    public LocalDate getBirthdate() {
         return birthdate;
     }
 
-    public void setBirthdate(String birthdate) {
+    public void setBirthdate(LocalDate birthdate) {
         this.birthdate = birthdate;
     }
 
